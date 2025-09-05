@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  gemini-proxy:
+    # 确保你的 Deno Dockerfile 在当前目录，或者使用一个现成的 Deno 镜像
+    # 为了简单起见，这里假设你有一个 Dockerfile，但更简单的是直接用 Deno 镜像
+    image: denoland/deno:latest
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "8088:8088"
+    environment:
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+    env_file:
+      - .env
+    restart: unless-stopped
+    # 命令来运行 Deno 服务
+    command: "run --allow-net --allow-read --allow-env main.ts"
