@@ -15,7 +15,7 @@ function createJsonErrorResponse(message: string, statusCode = 500) {
 async function callOpenRouter(
     messages: any[], 
     apiKey: string, 
-    model = "google/gemini-2.5-flash-image-preview:free" // 设置默认模型
+    model = "google/gemini-2.5-flash-image-preview" // 设置默认模型
 ): Promise<{ type: 'image' | 'text'; content: string }> {
     if (!apiKey) { throw new Error("callOpenRouter received an empty apiKey."); }
     
